@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>David Felix Opemipo · product & software portfolio</title>
+    <!-- Font Awesome 6 (free) + Google Font Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300..700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: "Inter", sans-serif;
+            background: #f4f8fd;
+            color: #162b3a;
+            line-height: 1.5;
+            scroll-behavior: smooth;
+        }
+
+        .container {
+            max-width: 1300px;
+            margin: 0 auto;
+            padding: 0 32px;
+        }
+
+        /* navigation */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 24px 0;
+            flex-wrap: wrap;
+            gap: 20px;
+            border-bottom: 1px solid rgba(0,45,85,0.1);
+        }
+
+        .logo {
+            font-size: 1.9rem;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            background: linear-gradient(145deg, #0a314b, #164b70);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.2rem;
+            font-weight: 500;
+        }
+        .nav-links a {
+            text-decoration: none;
+            color: #1e405e;
+            transition: 0.2s;
+            font-size: 1rem;
+        }
+        .nav-links a:hover { color: #0077b6; }
+
+        .social-header a {
+            color: #1e3b58;
+            margin-left: 22px;
+            font-size: 1.25rem;
+            transition: 0.2s;
+        }
+        .social-header a:hover { color: #0072b0; }
+
+        /* profile row — big visual upgrade */
+        .profile-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 40px;
+            margin: 44px 0 36px;
+            align-items: center;
+        }
+
+        .profile-avatar {
+            flex-shrink: 0;
+            width: 170px;
+            height: 170px;
+            background: linear-gradient(135deg, #b3d9f7, #dbeafe);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 20px 30px -10px rgba(18, 67, 112, 0.3);
+            border: 4px solid white;
+        }
+        .profile-avatar img {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            object-fit: cover;
+            display: block;
+        }
+        /* simulated profile image (modern placeholder) */
+        .avatar-placeholder {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            background: linear-gradient(145deg, #1d4e75, #0c3353);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            font-weight: 400;
+            color: white;
+            text-transform: uppercase;
+        }
+
+        .profile-headline {
+            flex: 1;
+        }
+        .profile-headline h1 {
+            font-size: 3.2rem;
+            font-weight: 700;
+            line-height: 1.2;
+            background: linear-gradient(150deg, #0b2b41, #1e4f73);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin-bottom: 8px;
+        }
+        .subtitle {
+            font-size: 1.3rem;
+            color: #1d496e;
+            font-weight: 400;
+            margin-bottom: 16px;
+        }
+        .contact-strip {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 24px 32px;
+            background: white;
+            padding: 14px 28px;
+            border-radius: 60px;
+            box-shadow: 0 6px 16px rgba(0,35,70,0.06);
+            margin-top: 12px;
+        }
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: #1d3b57;
+            font-weight: 500;
+        }
+        .contact-item i {
+            color: #26648b;
+            width: 20px;
+        }
+        .availability-badge {
+            background: #dcf0ff;
+            border-radius: 40px;
+            padding: 8px 20px;
+            font-weight: 600;
+            color: #09416b;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        /* summary */
+        .summary-card {
+            background: white;
+            border-radius: 32px;
+            padding: 32px 36px;
+            margin: 40px 0 40px;
+            box-shadow: 0 15px 30px -12px rgba(0, 45, 70, 0.12);
+            border: 1px solid rgba(255,255,255,0.7);
+            font-size: 1.1rem;
+            border-left: 6px solid #1f6290;
+        }
+
+        /* section titles */
+        .section-title {
+            font-size: 2.3rem;
+            font-weight: 650;
+            margin: 48px 0 28px 0;
+            color: #0a314a;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+        .section-title i {
+            font-size: 2rem;
+            color: #1d6fa5;
+        }
+
+        /* skill cards (compact) */
+        .skill-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+            gap: 24px;
+            margin-bottom: 20px;
+        }
+        .skill-card {
+            background: white;
+            border-radius: 24px;
+            padding: 24px 20px;
+            box-shadow: 0 8px 22px -12px #10345033;
+            transition: 0.15s;
+            border: 1px solid #e3f0fd;
+        }
+        .skill-card:hover { transform: translateY(-5px); }
+        .skill-category {
+            font-weight: 700;
+            font-size: 1.2rem;
+            margin-bottom: 18px;
+            color: #173f60;
+            border-bottom: 2px solid #cde3f5;
+            padding-bottom: 10px;
+        }
+        .skill-items {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .skill-tag {
+            background: #e4f0fc;
+            padding: 6px 16px;
+            border-radius: 40px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: #103e64;
+        }
+
+        /* PROJECTS — with images (professional placeholders) */
+        .projects-showcase {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 28px;
+            margin: 30px 0 50px;
+        }
+
+        .project-item {
+            background: white;
+            border-radius: 28px;
+            overflow: hidden;
+            box-shadow: 0 20px 30px -12px rgba(20, 60, 100, 0.2);
+            transition: all 0.25s ease;
+            border: 1px solid white;
+        }
+        .project-item:hover {
+            transform: scale(1.01);
+            box-shadow: 0 30px 40px -12px #0d4166;
+        }
+
+        .project-image {
+            width: 100%;
+            height: 190px;
+            background-color: #abcae9;
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: flex-end;
+            justify-content: flex-start;
+            padding: 12px;
+            color: white;
+            font-weight: 700;
+            text-shadow: 0 2px 5px rgba(0,0,0,0.3);
+            position: relative;
+        }
+        /* unique overlay per project (simulated screenshots) */
+        .img-label {
+            background: rgba(0, 32, 64, 0.7);
+            backdrop-filter: blur(3px);
+            padding: 6px 16px;
+            border-radius: 40px;
+            font-size: 0.85rem;
+            letter-spacing: 0.3px;
+            border: 1px solid rgba(255,255,255,0.3);
+        }
+
+        .project-content {
+            padding: 20px 20px 24px;
+        }
+        .project-title {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: #0b304b;
+            margin-bottom: 4px;
+        }
+        .project-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin: 12px 0 8px;
+        }
+        .stack-tag {
+            background: #d8e9ff;
+            border-radius: 30px;
+            padding: 4px 14px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: #0b3a5c;
+        }
+        .project-desc {
+            color: #2b4b6c;
+            font-size: 0.95rem;
+            margin: 12px 0 0;
+        }
+
+        /* two‑column experience (Python + web dev) */
+        .dual-column {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 28px;
+            margin: 30px 0 30px;
+        }
+        .dual-col {
+            flex: 1 1 360px;
+            background: white;
+            border-radius: 28px;
+            padding: 28px 28px;
+            box-shadow: 0 10px 25px -16px #123e60;
+        }
+        .dual-col h3 {
+            font-size: 1.8rem;
+            font-weight: 650;
+            color: #123e60;
+            margin-bottom: 24px;
+            border-left: 6px solid #1f6fa5;
+            padding-left: 18px;
+        }
+        .exp-list {
+            list-style: none;
+        }
+        .exp-list li {
+            display: flex;
+            gap: 14px;
+            margin-bottom: 20px;
+            align-items: flex-start;
+        }
+        .exp-list i {
+            color: #1e6292;
+            font-size: 1.2rem;
+            min-width: 28px;
+            margin-top: 3px;
+        }
+
+        /* education & cert */
+        .edu-cert {
+            background: white;
+            border-radius: 28px;
+            padding: 32px 32px;
+            margin: 40px 0;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 10px 25px -16px #0f3552;
+        }
+        .edu-left {
+            font-size: 1.2rem;
+        }
+        .edu-left h2 {
+            font-size: 2rem;
+            font-weight: 600;
+            color: #103a56;
+        }
+        .cert-row {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+        .cert-badge {
+            background: #134569;
+            color: white;
+            padding: 10px 24px;
+            border-radius: 40px;
+            font-weight: 500;
+            font-size: 1rem;
+        }
+
+        /* footer */
+        .footer {
+            background: white;
+            border-radius: 40px 40px 0 0;
+            padding: 36px 32px;
+            margin-top: 60px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 -10px 30px -12px #b0cadd;
+        }
+        .avail-tag {
+            background: #d3e9ff;
+            padding: 12px 28px;
+            border-radius: 60px;
+            font-weight: 600;
+            color: #022b48;
+            font-size: 1.2rem;
+        }
+        .footer-links a {
+            margin-left: 30px;
+            color: #16476b;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        .footer-links a:hover { text-decoration: underline; }
+
+        /* profile image custom (professional looking) */
+        .profile-avatar .avatar-placeholder span {
+            font-size: 4rem;
+            font-weight: 300;
+        }
+
+        @media (max-width: 750px) {
+            .profile-row { justify-content: center; text-align: center; }
+            .contact-strip { justify-content: center; }
+            .footer { flex-direction: column; gap: 20px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- navigation -->
+        <div class="navbar">
+            <div class="logo">David Felix Opemipo</div>
+            <div class="nav-links">
+                <a href="#">Work</a>
+                <a href="#">Projects</a>
+                <a href="#">Resume</a>
+                <a href="#">Contact</a>
+            </div>
+            <div class="social-header">
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                <a href="#"><i class="fab fa-github"></i></a>
+            </div>
+        </div>
+
+        <!-- PROFILE row with image (avatar) -->
+        <div class="profile-row">
+            <div class="profile-avatar">
+                <!-- professional headshot simulation (initial-based) / you'd replace src with real image -->
+                <div class="avatar-placeholder" style="background: linear-gradient(115deg, #165a82, #0e3753);">
+                    <span>DF</span>
+                </div>
+                <!-- if you have real image: <img src="your-photo.jpg" alt="David Felix"> -->
+            </div>
+            <div class="profile-headline">
+                <h1>David Felix Opemipo</h1>
+                <div class="subtitle">Website developer · Python engineer · 20 y/o</div>
+                <div class="contact-strip">
+                    <span class="contact-item"><i class="fas fa-phone-alt"></i>07038394820</span>
+                    <span class="contact-item"><i class="fas fa-envelope"></i>felixopemipo@gmail.com</span>
+                    <span class="contact-item"><i class="fab fa-twitter"></i>@DavidFe43176774</span>
+                    <span class="availability-badge"><i class="fas fa-briefcase"></i> open to all roles</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- summary -->
+        <div class="summary-card">
+            <i class="fas fa-quote-left" style="color: #1f6fa5; opacity: 0.4; font-size: 2rem; margin-right: 12px;"></i>
+            Experienced website developer & Python engineer with 5+ years building automation, predictive models, and full-stack sites. Skilled in HTML/CSS/JS, Django/Flask, and CMS (Squarespace, Webflow, GHL, Wix). Created solutions for finance, healthcare, transport, agritech, and crypto.
+        </div>
+
+        <!-- core skills with icons (no big change) -->
+        <div class="section-title"><i class="fas fa-cog"></i> technical core</div>
+        <div class="skill-grid">
+            <div class="skill-card"><div class="skill-category">💻 programming</div><div class="skill-items"><span class="skill-tag">Python</span><span class="skill-tag">C++</span></div></div>
+            <div class="skill-card"><div class="skill-category">🌐 web stack</div><div class="skill-items"><span class="skill-tag">HTML5</span><span class="skill-tag">CSS3</span><span class="skill-tag">JS</span><span class="skill-tag">Django</span><span class="skill-tag">Flask</span></div></div>
+            <div class="skill-card"><div class="skill-category">📈 data/auto</div><div class="skill-items"><span class="skill-tag">predictive modeling</span><span class="skill-tag">data viz</span><span class="skill-tag">automation</span></div></div>
+            <div class="skill-card"><div class="skill-category">📐 CMS</div><div class="skill-items"><span class="skill-tag">Wix</span><span class="skill-tag">Squarespace</span><span class="skill-tag">GoHighLevel</span><span class="skill-tag">Webflow</span></div></div>
+        </div>
+
+        <!-- PROJECTS WITH IMAGES (placeholders reflecting each project) -->
+        <div class="section-title"><i class="fas fa-images"></i> projects — live previews</div>
+        <div class="projects-showcase">
+            <!-- Web projects (with unique background images) -->
+            <div class="project-item">
+                <div class="project-image" style="background-image: linear-gradient( rgba(0, 30, 60, 0.5), rgba(0, 20, 40, 0.7) ), url('https://placecats.com/300/190?random=1'); background-size: cover; background-position: center;">
+                    <span class="img-label">Squarespace</span>
+                </div>
+                <div class="project-content">
+                    <div class="project-title">DF-Properties</div>
+                    <div class="project-stack"><span class="stack-tag">CMS</span><span class="stack-tag">real estate</span></div>
+                    <div class="project-desc">Property sales site, fully responsive, built on Squarespace.</div>
+                </div>
+            </div>
+            <div class="project-item">
+                <div class="project-image" style="background-image: linear-gradient( rgba(0, 30, 60, 0.4), rgba(0, 20, 40, 0.6) ), url('https://placecats.com/301/191?random=2');">
+                    <span class="img-label">GoHighLevel</span>
+                </div>
+                <div class="project-content">
+                    <div class="project-title">Tomatoes sales funnel</div>
+                    <div class="project-stack"><span class="stack-tag">marketing</span><span class="stack-tag">funnel</span></div>
+                    <div class="project-desc">High-converting funnel for tomato marketing (GoHighLevel).</div>
+                </div>
+            </div>
+            <div class="project-item">
+                <div class="project-image" style="background-image: linear-gradient( rgba(0,30,60,0.5), rgba(0,0,0,0.5) ), url('https://placecats.com/302/192?random=3');">
+                    <span class="img-label">HTML/CSS/JS</span>
+                </div>
+                <div class="project-content">
+                    <div class="project-title">SwiftPick</div>
+                    <div class="project-stack"><span class="stack-tag">delivery</span><span class="stack-tag">JS</span></div>
+                    <div class="project-desc">Delivery service website with interactive tracking UI.</div>
+                </div>
+            </div>
+            <div class="project-item">
+                <div class="project-image" style="background-image: linear-gradient( rgba(0,30,60,0.4), rgba(0,20,50,0.5) ), url('https://placecats.com/303/193?random=4');">
+                    <span class="img-label">Python / PySide6</span>
+                </div>
+                <div class="project-content">
+                    <div class="project-title">Aggregator</div>
+                    <div class="project-stack"><span class="stack-tag">livestock</span><span class="stack-tag">desktop</span></div>
+                    <div class="project-desc">Intelligent feed formulation system (Python + PySide6 GUI).</div>
+                </div>
+            </div>
+            <div class="project-item">
+                <div class="project-image" style="background-image: linear-gradient( rgba(0,30,60,0.5), rgba(0,20,50,0.6) ), url('https://placecats.com/304/194?random=5');">
+                    <span class="img-label">Kivy / BTC</span>
+                </div>
+                <div class="project-content">
+                    <div class="project-title">TrekNal</div>
+                    <div class="project-stack"><span class="stack-tag">bitcoin</span><span class="stack-tag">prediction</span></div>
+                    <div class="project-desc">BTC price prediction system with Python & Kivy GUI.</div>
+                </div>
+            </div>
+            <div class="project-item">
+                <div class="project-image" style="background-image: linear-gradient( rgba(0,30,60,0.4), rgba(0,20,50,0.5) ), url('https://placecats.com/305/195?random=6');">
+                    <span class="img-label">PySide6</span>
+                </div>
+                <div class="project-content">
+                    <div class="project-title">Expenz & Data_Numb</div>
+                    <div class="project-stack"><span class="stack-tag">expense</span><span class="stack-tag">school admin</span></div>
+                    <div class="project-desc">Real‑time expense tracker & school admin software.</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- detailed experience split (website / python) with more projects listed -->
+        <div class="dual-column">
+            <div class="dual-col">
+                <h3><i class="fas fa-window-maximize"></i> web development</h3>
+                <ul class="exp-list">
+                    <li><i class="fas fa-check-circle"></i> <div><strong>DF-Properties</strong> – Squarespace (real estate)</div></li>
+                    <li><i class="fas fa-check-circle"></i> <div><strong>Kayaking</strong> – Squarespace vacation</div></li>
+                    <li><i class="fas fa-check-circle"></i> <div><strong>Tomatoes funnel</strong> – GoHighLevel marketing</div></li>
+                    <li><i class="fas fa-check-circle"></i> <div><strong>SwiftPick</strong> – delivery (HTML/CSS/JS)</div></li>
+                    <li><i class="fas fa-check-circle"></i> <div><strong>P-Ride</strong> – vehicle rental</div></li>
+                    <li><i class="fas fa-check-circle"></i> <div><strong>PrimeInvest</strong> – investment</div></li>
+                    <li><i class="fas fa-check-circle"></i> <div><strong>Luni / Vitalis</strong> – brand & healthcare</div></li>
+                </ul>
+            </div>
+            <div class="dual-col">
+                <h3><i class="fab fa-python"></i> python / software</h3>
+                <ul class="exp-list">
+                    <li><i class="fas fa-check-circle"></i> <div><strong>Aggregator</strong> – livestock feed (PySide6)</div></li>
+                    <li><i class="fas fa-check-circle"></i> <div><strong>AutoMail</strong> – bulk email automation</div></li>
+                    <li><i class="fas fa-check-circle"></i> <div><strong>Data_Numb</strong> – school admin (PySide6)</div></li>
+                    <li><i class="fas fa-check-circle"></i> <div><strong>Expenz</strong> – expense tracking (PySide6)</div></li>
+                    <li><i class="fas fa-check-circle"></i> <div><strong>DFMODEL</strong> – data modeling & viz</div></li>
+                    <li><i class="fas fa-check-circle"></i> <div><strong>TrekNal</strong> – BTC price prediction (Kivy)</div></li>
+                </ul>
+                <div style="margin-top:24px; background:#E5F0FA; padding:12px 20px; border-radius:40px; font-weight:500;"><i class="fas fa-rocket"></i> 5+ years automation, predictive models, backend</div>
+            </div>
+        </div>
+
+        <!-- Education & certification block -->
+        <div class="edu-cert">
+            <div class="edu-left">
+                <h2><i class="fas fa-graduation-cap"></i> Agricultural & Environmental Engineering</h2>
+                <p>Federal University of Technology, Nigeria · current student</p>
+            </div>
+            <div class="cert-row">
+                <span class="cert-badge">HackerRank Python</span>
+                <span class="cert-badge">Jobberman certified</span>
+                <span class="cert-badge">MORE THAN 4.0 (FUTA)</span>
+            </div>
+        </div>
+
+        <!-- footer with availability and contact -->
+        <div class="footer">
+            <div class="avail-tag"><i class="fas fa-briefcase"></i> full‑time · contract · freelance · remote/hybrid</div>
+            <div class="footer-links">
+                <a href="#"><i class="fas fa-file-pdf"></i> download CV</a>
+                <a href="#"><i class="fas fa-envelope"></i> mail</a>
+                <a href="#"><i class="fab fa-twitter"></i> @DavidFe43176774</a>
+            </div>
+        </div>
+
+        <!-- tiny credit (professional watermark) -->
+        <div style="text-align: center; padding: 24px 0 18px; color: #3f688b; opacity: 0.7; font-size: 0.9rem;">
+            <i class="fas fa-crown" style="opacity: 0.5;"></i> David Felix Opemipo · 20 years · portfolio based on CV
+        </div>
+    </div>
+</body>
+</html>
